@@ -1,6 +1,6 @@
 #include <M5StickC.h>
 
-uint16_t dF[16] = {	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+uint16_t dF[16] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 uint16_t field[16];
 uint8_t lS = 0;
 bool ch, ca, eN = false;
@@ -29,11 +29,12 @@ void dTi() {
 	for (int i = 0; i < 16; i++) {
 		dT(field[i], 15 + (i%4)*27, 11 + (i/4)*19);
 	}
-    M5.Lcd.drawString("M5-2048", 141, 5, 1);
-    M5.Lcd.drawString("Max:", 141, 25, 1);
-    M5.Lcd.drawString(String(mN), 141, 35, 1);
+    M5.Lcd.drawString("M5-2048", 140, 5, 1);
+    M5.Lcd.drawString("Max:", 140, 25, 1);
+    M5.Lcd.drawString(String(mN), 140, 35, 1);
     if (eN) {
-        M5.Lcd.drawString("KONEC", 141, 70, 1);
+        M5.Lcd.drawString("GAME", 140, 60, 1);
+        M5.Lcd.drawString("OVER", 140, 70, 1);
     }
 }
 uint16_t rN() {
@@ -128,10 +129,10 @@ void loop() {
     if (aX > .6 || aY < -.6 || aX < -.6 || aY > .6 ) {
         if (ca) {
             ch = true;
-            if (aX > .5) { lS = 0; }
-            else if (aY < -.5) { lS = 1; }
-            else if (aX < -.5) { lS = 2; }
-            else if (aY > .5) { lS = 3; }
+            if (aX > .6) { lS = 0; }
+            else if (aY < -.6) { lS = 1; }
+            else if (aX < -.6) { lS = 2; }
+            else if (aY > .6) { lS = 3; }
         }
         ca = false;
     } else if (aX < .4 && aX > -.4 && aY < .4 && aY > -.4 ) {
